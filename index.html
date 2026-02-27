@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUPER HOT — Sphere Throw</title>
+    <meta name="description" content="A SUPERHOT-inspired WebGL game where time moves when you move. Throw spheres to shatter crystalline enemies.">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Three.js from CDN -->
+    <script src="https://unpkg.com/three@0.152.0/build/three.min.js"></script>
+</head>
+<body>
+    <!-- Game Canvas Container -->
+    <div id="game-container"></div>
+
+    <!-- ===== TITLE SCREEN ===== -->
+    <div id="title-screen">
+        <div class="title-text">SUPER<span>HOT</span></div>
+        <div class="title-subtitle">sphere throw edition</div>
+        <div class="title-start">[ CLICK TO START ]</div>
+    </div>
+
+    <!-- ===== HUD ===== -->
+    <div id="hud" class="hidden">
+        <div id="crosshair">
+            <div class="dot"></div>
+        </div>
+        <div id="ammo-count"></div>
+        <div id="time-bar-container">
+            <div id="time-bar"></div>
+        </div>
+        <div id="instructions">
+            WASD — Move &nbsp;&nbsp; Mouse — Look &nbsp;&nbsp; Click — Throw<br>
+            Time moves when you move
+        </div>
+    </div>
+
+    <!-- ===== WIN SCREEN ===== -->
+    <div id="win-screen" class="hidden">
+        <div id="super-hot-text"></div>
+        <div class="win-restart">[ CLICK TO PLAY AGAIN ]</div>
+    </div>
+
+    <!-- ===== LOSE SCREEN ===== -->
+    <div id="lose-screen" class="hidden">
+        <div class="lose-text">ELIMINATED</div>
+        <div class="lose-subtitle">[ CLICK TO RETRY ]</div>
+    </div>
+
+    <!-- Game Scripts (ES Modules) -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
