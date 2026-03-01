@@ -195,11 +195,13 @@ export class Level {
     }
 
     checkAmmoPickup(playerPos, player) {
-        const pickupRadius = 1.0;
+        const pickupRadius = 2.0;
         for (const pickup of this.ammoPickups) {
             if (!pickup.userData.active) continue;
             const dist = playerPos.distanceTo(pickup.position);
             if (dist < pickupRadius) {
+                // Only consume pickup if player isn't already at max ammo
+                if (player.spheres >= player.maxSpheres) continue;
                 player.addAmmo(pickup.userData.ammoAmount);
                 pickup.userData.active = false;
                 pickup.visible = false;

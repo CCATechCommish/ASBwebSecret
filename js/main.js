@@ -197,6 +197,7 @@ class Game {
         document.addEventListener('contextmenu', (e) => e.preventDefault());
     }
 
+
     _startGame() {
         this.state = STATE.PLAYING;
 

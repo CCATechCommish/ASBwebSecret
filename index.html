@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUPER HOT — Sphere Throw</title>
-    <meta name="description" content="A SUPERHOT-inspired WebGL game where time moves when you move. Throw spheres to shatter crystalline enemies.">
+    <meta name="description"
+        content="A SUPERHOT-inspired WebGL game where time moves when you move. Throw spheres to shatter crystalline enemies.">
 
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Three.js from CDN -->
     <script src="https://unpkg.com/three@0.152.0/build/three.min.js"></script>
 </head>
+
 <body>
     <!-- Game Canvas Container -->
     <div id="game-container"></div>
@@ -33,7 +36,8 @@
         </div>
         <div id="instructions">
             WASD — Move &nbsp;&nbsp; Mouse — Look &nbsp;&nbsp; Click — Throw<br>
-            Time moves when you move
+            Time moves when you move<br>
+            Enter×2 — Fullscreen
         </div>
     </div>
 
@@ -45,11 +49,37 @@
 
     <!-- ===== LOSE SCREEN ===== -->
     <div id="lose-screen" class="hidden">
-        <div class="lose-text">ELIMINATED</div>
+        <div class="lose-text">YOU LOSE</div>
         <div class="lose-subtitle">[ CLICK TO RETRY ]</div>
     </div>
+
+    <!-- Fullscreen handler — must be a regular (non-module) script for Chrome user activation -->
+    <script>
+        (function () {
+            var lastEnterTime = 0;
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    var now = Date.now();
+                    if (now - lastEnterTime < 2000 && lastEnterTime > 0) {
+                        // Double-Enter: toggle fullscreen
+                        if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+                            var el = document.documentElement;
+                            (el.requestFullscreen || el.webkitRequestFullscreen).call(el);
+                        } else {
+                            (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+                        }
+                        lastEnterTime = 0;
+                    } else {
+                        lastEnterTime = now;
+                    }
+                }
+            });
+        })();
+    </script>
 
     <!-- Game Scripts (ES Modules) -->
     <script type="module" src="js/main.js"></script>
 </body>
+
 </html>

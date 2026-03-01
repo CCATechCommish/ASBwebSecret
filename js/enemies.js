@@ -6,7 +6,7 @@ export class Enemy {
         this.alive = true;
         this.speed = 2.5;
         this.reachDistance = 1.5;
-        this.hitRadius = 0.6;
+        this.hitRadius = 1;
 
         this.group = new THREE.Group();
         this.group.position.copy(position);
